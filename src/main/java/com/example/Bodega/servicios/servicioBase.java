@@ -2,7 +2,7 @@ package com.example.Bodega.servicios;
 
 import java.util.List;
 
-public interface ServicioBase<E>{
+public interface servicioBase<E>{
 
     public List<E> buscartodos() throws Exception;
     public E buscarPorId(Integer id) throws  Exception;

@@ -1,32 +1,33 @@
 package com.example.Bodega.servicios;
 
-import com.example.Bodega.entidades.Mercancia;
-import com.example.Bodega.entidades.zona;
+import com.example.Bodega.entidades.Zona;
 import com.example.Bodega.repositorios.Zonarepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ZonaServicio implements ServicioBase<zona>{
+@Service
+public class zonaservicio implements servicioBase<Zona> {
     @Autowired
     private Zonarepositorio zonarepositorio;
 
     @Override
     @Transactional(readOnly = true)
-    public List<zona> buscartodos() throws Exception {
+    public List<Zona> buscartodos() throws Exception {
         try {
-            List<zona> zonas=zonarepositorio.findAll();
-            return zonas;
+            List<Zona> Zonas =zonarepositorio.findAll();
+            return Zonas;
         }catch (Exception error){
             throw new Exception(error.getMessage());
         }
     }
     @Override
-    public zona buscarPorId(Integer id) throws Exception {
+    public Zona buscarPorId(Integer id) throws Exception {
         try {
-            Optional<zona>zonaOptional=zonarepositorio.findById(id);
+            Optional<Zona>zonaOptional=zonarepositorio.findById(id);
             if (zonaOptional.isPresent()){
                 return zonaOptional.get();
             }else {
@@ -38,9 +39,9 @@ public class ZonaServicio implements ServicioBase<zona>{
     }
 
     @Override
-    public zona registrar(zona datosARegistrar) throws Exception {
+    public Zona registrar(Zona datosARegistrar) throws Exception {
         try {
-            zona zonaRegistrada=zonarepositorio.save(datosARegistrar);
+            Zona zonaRegistrada=zonarepositorio.save(datosARegistrar);
             return zonaRegistrada;
         }catch (Exception error){
             throw new Exception(error.getMessage());
@@ -48,12 +49,12 @@ public class ZonaServicio implements ServicioBase<zona>{
     }
 
     @Override
-    public zona actualizar(Integer id, zona datosNuevos) throws Exception {
+    public Zona actualizar(Integer id, Zona datosNuevos) throws Exception {
         try {
-            Optional<zona>zonaOptional=zonarepositorio.findById(id);
-            zona zonaExcistente=zonaOptional.get();
+            Optional<Zona>zonaOptional=zonarepositorio.findById(id);
+            Zona zonaExcistente=zonaOptional.get();
             zonaExcistente.setCapacidad(datosNuevos.getCapacidad());
-            zona zonaActualizada=zonarepositorio.save(zonaExcistente);
+            Zona zonaActualizada=zonarepositorio.save(zonaExcistente);
             return zonaActualizada;
         }catch (Exception error){
             throw new Exception(error.getMessage());
@@ -63,7 +64,7 @@ public class ZonaServicio implements ServicioBase<zona>{
     @Override
     public boolean eliminar(Integer id) throws Exception {
         try {
-            Optional<zona>zonaOptional=zonarepositorio.findById(id);
+            Optional<Zona>zonaOptional=zonarepositorio.findById(id);
             if (zonaOptional.isPresent()){
                 zonarepositorio.deleteById(id);
                 return true;

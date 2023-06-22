@@ -1,7 +1,6 @@
 package com.example.Bodega.Controladores;
 
 import com.example.Bodega.entidades.Mercancia;
-import com.example.Bodega.servicios.MercanciaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("api/v1/mercancias")
-public class Controladormercancia {
+public class mercanciaControlador {
     @Autowired
-    protected MercanciaServicio mercanciaServicio;
+    protected com.example.Bodega.servicios.mercanciaServicio mercanciaServicio;
     @PostMapping
     public ResponseEntity<Mercancia> registar(@RequestBody Mercancia datosAGuardar){
     try {

@@ -3,12 +3,14 @@ package com.example.Bodega.servicios;
 import com.example.Bodega.entidades.Mercancia;
 import com.example.Bodega.repositorios.Mercanciarepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-public class MercanciaServicio implements ServicioBase<Mercancia> {
+@Service
+public class mercanciaServicio implements servicioBase<Mercancia> {
     @Autowired
     private Mercanciarepositorio mercanciarepositorio;
     @Override

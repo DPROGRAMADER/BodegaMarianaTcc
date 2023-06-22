@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="zona")
-public class zona {
+public class Zona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,10 @@ public class zona {
     @Column(name="tiempo")
     private String tiempo;
 
-    public zona( ) {
+    public Zona( ) {
     }
 
-    public zona(Integer id, String nombre, String capacidad, String tiempo) {
+    public Zona(Integer id, String nombre, String capacidad, String tiempo) {
         this.id = id;
         this.nombre = nombre;
         this.capacidad = capacidad;
